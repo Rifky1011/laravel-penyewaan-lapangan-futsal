@@ -6,7 +6,7 @@
 <div class="bg-white p-5 shadow-md rounded-lg">
     <h2 class="text-2xl font-semibold mb-4">Tambah Lapangan</h2>
 
-    <form action="{{ route('fields.store') }}" method="POST" class="space-y-4">
+    <form action="{{ route('lapangan.store') }}" method="POST" class="space-y-4">
         @csrf
         <div>
             <label class="block font-medium">Nama Lapangan</label>
