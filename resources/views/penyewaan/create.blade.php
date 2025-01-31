@@ -127,12 +127,12 @@
                 const hargaPerJam = parseInt(lapanganSelect.options[lapanganSelect.selectedIndex].getAttribute("data-harga")) || 0;
                 const durasi = parseInt(durasiInput.value) || 0;
                 const total = hargaPerJam * durasi;
-                totalHargaInput.value = total ? `Rp${total.toLocaleString("id-ID")}` : "";
+                totalHargaInput.value = total ? `Rp. ${total.toLocaleString("id-ID")}` : "";
             }
 
             lapanganSelect.addEventListener("change", hitungTotal);
             durasiInput.addEventListener("input", hitungTotal);
         });
-    </script>    
+    </script>
 </body>
 </html>
