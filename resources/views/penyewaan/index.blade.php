@@ -59,11 +59,11 @@
 <body>
     <div class="container">
         <div class="nav">
-            <a href="{{ route('home') }}">Home</a>
+            <a href="{{ route('dashboard') }}">Home</a>
             <a href="{{ route('penyewaan.index') }}">Daftar Penyewaan</a>
             <a href="{{ route('lapangan.index') }}">Lapangan</a>
         </div>
-        
+
         <h1>Daftar Penyewaan</h1>
 
         <table>
@@ -96,7 +96,7 @@
                 @endforeach
             </tbody>
         </table>
-        
+
         <div style="text-align: center; margin-top: 20px;">
             <a href="{{ route('penyewaan.create') }}" style="padding: 10px 20px; background: #6a89cc; color: white; text-decoration: none; border-radius: 5px;">Tambah Penyewaan</a>
         </div>

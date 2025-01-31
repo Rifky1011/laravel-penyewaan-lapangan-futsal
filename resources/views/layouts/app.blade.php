@@ -9,11 +9,19 @@
 <body>
     <nav class="navbar navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="{{ route('dashboard') }}">Sewa Lapangan</a>
+            {{-- @if(auth()->user()->role == 'admin')
+                <a class="navbar-brand" href="{{ route('dashboard') }}">Sewa Lapangan (Admin)</a>
+            @else
+                <a class="navbar-brand" href="{{ route('dashboard') }}">Sewa Lapangan (User)</a>--}}
+                <a class="navbar-brand" href="{{ route('dashboard') }}">Sewa Lapangan</a>
+            {{-- @endif --}}
             <div>
                 <a href="{{ route('dashboard') }}" class="text-white">Dashboard</a>
                 <a href="{{ route('penyewaan.create') }}" class="text-white ms-3">Penyewaan</a>
-                <a href="{{ route('logout') }}" class="text-white ms-3">Logout</a>
+                <form action="{{ route('logout') }}" method="POST" class="d-inline">
+                    @csrf
+                    <button type="submit" class="btn btn-link text-white ms-3 p-0">Logout</button>
+                </form>
             </div>
         </div>
     </nav>
