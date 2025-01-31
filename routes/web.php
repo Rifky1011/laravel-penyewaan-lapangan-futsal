@@ -42,7 +42,7 @@ Route::middleware(['auth'])->group(function () {
     Route::group(['middleware' => ['role:user']], function () {
         Route::get('/penyewaan', [PenyewaanController::class, 'index'])->name('penyewaan.index');  // Daftar penyewaan
         Route::get('/penyewaan/create', [PenyewaanController::class, 'create'])->name('penyewaan.create');  // Form penyewaan
-        Route::post('/penyewaan/store', [PenyewaanController::class, 'store'])->name('penyewaan.store2');  // Proses penyewaan
+        Route::post('/penyewaan/store', [PenyewaanController::class, 'store'])->name('penyewaan.store');  // Proses penyewaan
         Route::get('/penyewaan/hitung-harga/{lapangan_id}', [PenyewaanController::class, 'hitungHarga']);
     });
 
