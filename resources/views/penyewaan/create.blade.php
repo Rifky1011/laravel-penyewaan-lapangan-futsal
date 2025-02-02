@@ -1,5 +1,3 @@
-<!-- resources/views/penyewaan/create.blade.php -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -77,7 +75,6 @@
 <body>
     <nav>
         <a href="{{ route('dashboard') }}">Dashboard</a>
-        <a href="{{ route('lapangan.index') }}">Daftar Lapangan</a>
         <a href="{{ route('penyewaan.index') }}">Riwayat Penyewaan</a>
     </nav>
     <div class="container">
@@ -104,6 +101,16 @@
             </div>
 
             <div class="form-group">
+                <label for="waktu_mulai">Waktu Mulai:</label>
+                <input type="datetime-local" name="waktu_mulai" id="waktu_mulai" required>
+            </div>
+
+            <div class="form-group">
+                <label for="waktu_selesai">Waktu Selesai:</label>
+                <input type="datetime-local" name="waktu_selesai" id="waktu_selesai" required>
+            </div>
+
+            <div class="form-group">
                 <label for="durasi">Durasi (jam):</label>
                 <input type="number" name="durasi" id="durasi" min="1" required>
             </div>
@@ -122,6 +129,8 @@
             const lapanganSelect = document.getElementById("lapangan");
             const durasiInput = document.getElementById("durasi");
             const totalHargaInput = document.getElementById("total_harga");
+            const waktuMulaiInput = document.getElementById("waktu_mulai");
+            const waktuSelesaiInput = document.getElementById("waktu_selesai");
 
             function hitungTotal() {
                 const hargaPerJam = parseInt(lapanganSelect.options[lapanganSelect.selectedIndex].getAttribute("data-harga")) || 0;
@@ -130,8 +139,20 @@
                 totalHargaInput.value = total ? `Rp. ${total.toLocaleString("id-ID")}` : "";
             }
 
+            function hitungDurasi() {
+                const mulai = new Date(waktuMulaiInput.value);
+                const selesai = new Date(waktuSelesaiInput.value);
+                if (mulai && selesai && selesai > mulai) {
+                    const durasiJam = (selesai - mulai) / (1000 * 60 * 60);
+                    durasiInput.value = Math.ceil(durasiJam);
+                    hitungTotal();
+                }
+            }
+
             lapanganSelect.addEventListener("change", hitungTotal);
             durasiInput.addEventListener("input", hitungTotal);
+            waktuMulaiInput.addEventListener("change", hitungDurasi);
+            waktuSelesaiInput.addEventListener("change", hitungDurasi);
         });
     </script>
 </body>

@@ -61,7 +61,6 @@
         <div class="nav">
             <a href="{{ route('dashboard') }}">Home</a>
             <a href="{{ route('penyewaan.index') }}">Daftar Penyewaan</a>
-            <a href="{{ route('lapangan.index') }}">Lapangan</a>
         </div>
 
         <h1>Daftar Penyewaan</h1>

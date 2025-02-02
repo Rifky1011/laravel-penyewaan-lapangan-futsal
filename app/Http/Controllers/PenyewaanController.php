@@ -39,14 +39,14 @@ class PenyewaanController extends Controller
 
         // Convert the string to a numeric value
         $numericTotalHarga = (float) $numericTotalHarga;
-        // $waktu_mulai = Carbon::parse($request->waktu_mulai);
+        $waktu_mulai = Carbon::parse($request->waktu_mulai);
         Penyewaan::create([
             'user_id' => Auth::user()->id,
             'lapangan_id' => $request->lapangan_id,
             'waktu_mulai' => now(),
             'waktu_selesai' => now(),
-            // 'waktu_mulai' => $waktu_mulai,
-            // 'waktu_selesai' => $waktu_mulai->clone()->addHours((int)$request->durasi),
+            'waktu_mulai' => $waktu_mulai,
+            'waktu_selesai' => $waktu_mulai->clone()->addHours((int)$request->durasi),
             'total_harga' => $numericTotalHarga,
         ]);
 
